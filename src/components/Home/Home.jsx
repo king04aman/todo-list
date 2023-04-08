@@ -30,23 +30,21 @@ const Home = () => {
   }
 
   function updateTitle(updatedId, updatedTitle) {
-    const update = tasks.map(item => {
-      if (item.id === updatedId) {
-        item.title = updatedTitle;
-      }
-      return item;
-    });
-    updateTasks(update);
+    const index = tasks.findIndex(item => item.id === updatedId);
+    if (index !== -1) {
+      const update = [...tasks];
+      update[index].title = updatedTitle;
+      updateTasks(update);
+    }
   }
 
   function updateStatus(updatedId, status) {
-    const update = tasks.map(item => {
-      if (item.id === updatedId) {
-        item.completed = status;
-      }
-      return item;
-    });
-    updateTasks(update);
+    const index = tasks.findIndex(item => item.id === updatedId);
+    if (index !== -1) {
+      const update = [...tasks];
+      update[index].completed = status;
+      updateTasks(update);
+    }
   }
 
   return (
